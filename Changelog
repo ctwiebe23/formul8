@@ -1,8 +1,10 @@
+251112	0.1.1 -- README stuff
+	Bare minimum README.
 251112	0.1.0 -- Initial push
 	Configured github source control and all that jazz.
 251112	0.0.4 -- Documentation and formatting
-	I finally gave in to my sinful pleasures and wrote a single comment.
-	Also whitespace, I didn't have of that before this point.
+	I finally gave in to my sinful pleasures and wrote a single blessed
+	comment. Also whitespace, I didn't have of that before this point.
 	Whatever.
 251112	0.0.3 -- TypeScript
 	Converted to TypeScript for the generated declaration file.
