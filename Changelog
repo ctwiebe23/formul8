@@ -1,0 +1,16 @@
+251112	0.1.0 -- Initial push
+	Configured github source control and all that jazz.
+251112	0.0.4 -- Documentation and formatting
+	I finally gave in to my sinful pleasures and wrote a single comment.
+	Also whitespace, I didn't have of that before this point.
+	Whatever.
+251112	0.0.3 -- TypeScript
+	Converted to TypeScript for the generated declaration file.
+251112	0.0.2 -- Custom events and debouncing
+	Added a custom event that fires when the value obj updates, and
+	a debounce system to prevent that from happening all the time
+251111	0.0.1 -- Checkbox exceptions
+	Now handles checkboxes differently than other inputs.
+251111	0.0.0 -- Initial draft
+	Start of project; some thrown-together recursive functions.
+	Base functionality implemented.

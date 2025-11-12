@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "target": "es2020",
+        "moduleResolution": "classic"
+    },
+    "files": [
+        "./form_factor.ts"
+    ]
+}
