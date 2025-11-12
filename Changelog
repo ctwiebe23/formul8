@@ -1,3 +1,7 @@
+251112	0.1.2 -- More options
+	Added an option to override the default events, and moved debounce
+	into the option object as well.  Also updated the logic to recognize
+	textareas and selects as input-ish.
 251112	0.1.1 -- README stuff
 	Bare minimum README.
 251112	0.1.0 -- Initial push
@@ -10,7 +14,7 @@
 	Converted to TypeScript for the generated declaration file.
 251112	0.0.2 -- Custom events and debouncing
 	Added a custom event that fires when the value obj updates, and
-	a debounce system to prevent that from happening all the time
+	a debounce system to prevent that from happening all the time.
 251111	0.0.1 -- Checkbox exceptions
 	Now handles checkboxes differently than other inputs.
 251111	0.0.0 -- Initial draft

@@ -1,6 +1,6 @@
 const default_debounce = 250
 
-const notable_events = ["change", "blur", "keydown"]
+const notable_events = ["change", "blur", "keydown", "submit"]
 
 /**
  * Builds a JSON object from the given form, where each form input is a key in
@@ -8,15 +8,16 @@ const notable_events = ["change", "blur", "keydown"]
  * updated and a custom event fired on the document each time the form changes,
  * after a debounce period.
  * @param form The form in question, either the HTMLElement or the ID.
- * @param debounce The amount of time in milliseconds after which the value
- * object should be updated.
+ * @param options Debounce is the amount of time in milliseconds after a change
+ * when the value object should be updated; Events are the events for which the
+ * value object should update.
  * @returns The value object that is updated each change, and the name of the
  * event that fires on those updates.  Null and null if the given form doesn't
  * exist.
  */
 export const form_factor = (
     form: HTMLFormElement | string,
-    debounce = default_debounce,
+    options: { debounce: number; events: string[] } = null,
 ) => {
     if (typeof form === "string") {
         form = document.getElementById(form) as HTMLFormElement
@@ -25,6 +26,9 @@ export const form_factor = (
     if (!(form instanceof HTMLFormElement)) {
         return { values: null, event_name: null }
     }
+
+    const events = options?.events || notable_events
+    const debounce = options?.debounce || default_debounce
 
     const name = form.name || form.id || fallback_id()
     const event_name = name + "-change"
@@ -35,7 +39,7 @@ export const form_factor = (
 
     let timer_id: number
 
-    for (const event of notable_events) {
+    for (const event of events) {
         form.addEventListener(event, () => {
             clearTimeout(timer_id)
 
@@ -66,7 +70,9 @@ const gather_inputs = (element: HTMLElement) => {
         inputs[name] = gather_inputs(fieldset as HTMLElement)
     }
 
-    const input_elements = element.querySelectorAll(":scope > input")
+    const input_elements = element.querySelectorAll(
+        ":scope > :is(input, textarea, select)",
+    )
 
     for (const input of input_elements) {
         const name =
