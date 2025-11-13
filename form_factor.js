@@ -20,9 +20,9 @@ export const form_factor = (form, options = null) => {
     if (!(form instanceof HTMLFormElement)) {
         return { values: null, event_name: null };
     }
-    const events = options?.events || notable_events;
-    const debounce = options?.debounce || default_debounce;
-    const name = form.name || form.id || fallback_id();
+    const events = options?.events ?? notable_events;
+    const debounce = options?.debounce ?? default_debounce;
+    const name = form.name || form.id || fallback_id(form);
     const event_name = name + "-change";
     const inputs = gather_inputs(form);
     const values = {};
@@ -47,12 +47,12 @@ const gather_inputs = (element) => {
             fieldset.id ||
             fieldset.querySelector(":scope > legend")
                 ?.innerText ||
-            fallback_id();
+            fallback_id(fieldset);
         inputs[name] = gather_inputs(fieldset);
     }
     const input_elements = element.querySelectorAll(":scope > :is(input, textarea, select)");
     for (const input of input_elements) {
-        const name = input.name || input.id || fallback_id();
+        const name = input.name || input.id || fallback_id(input);
         inputs[name] = input;
     }
     return inputs;
@@ -80,7 +80,9 @@ const notify = (event_name, values) => {
     document.dispatchEvent(new CustomEvent(event_name, { detail: values }));
 };
 let inc = 0;
-const fallback_id = () => {
-    console.warn("Using fallback id: form_factor_" + inc);
-    return "form_factor_" + inc++;
+const fallback_id = (element) => {
+    const id = "form_factor_" + inc++;
+    element.name = id;
+    console.warn("form_factor: Using fallback id \"" + id + "\" for element", element);
+    return id;
 };

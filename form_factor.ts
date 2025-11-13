@@ -27,10 +27,10 @@ export const form_factor = (
         return { values: null, event_name: null }
     }
 
-    const events = options?.events || notable_events
-    const debounce = options?.debounce || default_debounce
+    const events = options?.events ?? notable_events
+    const debounce = options?.debounce ?? default_debounce
 
-    const name = form.name || form.id || fallback_id()
+    const name = form.name || form.id || fallback_id(form)
     const event_name = name + "-change"
 
     const inputs = gather_inputs(form)
@@ -65,7 +65,7 @@ const gather_inputs = (element: HTMLElement) => {
             fieldset.id ||
             (fieldset.querySelector(":scope > legend") as HTMLElement)
                 ?.innerText ||
-            fallback_id()
+            fallback_id(fieldset)
 
         inputs[name] = gather_inputs(fieldset as HTMLElement)
     }
@@ -76,7 +76,7 @@ const gather_inputs = (element: HTMLElement) => {
 
     for (const input of input_elements) {
         const name =
-            (input as HTMLInputElement).name || input.id || fallback_id()
+            (input as HTMLInputElement).name || input.id || fallback_id(input)
 
         inputs[name] = input as HTMLInputElement
     }
@@ -112,7 +112,12 @@ const notify = (event_name: string, values: ValueColl) => {
 
 let inc = 0
 
-const fallback_id = () => {
-    console.warn("Using fallback id: form_factor_" + inc)
-    return "form_factor_" + inc++
+const fallback_id = (element: Element) => {
+    const id = "form_factor_" + inc++
+    ;(element as HTMLInputElement).name = id
+    console.warn(
+        "form_factor: Using fallback id \"" + id + "\" for element",
+        element,
+    )
+    return id
 }
