@@ -1,5 +1,6 @@
 251113	0.2.0 -- Published to NPM
-	Published the project to NPM under the name form_factor.
+	Published the project to NPM under the name formul8 (previously
+	known as form_factor).
 	Added test.html as an example.
 	Made it so that when a legend is taken as an identifier the name is
 	first lowercased.

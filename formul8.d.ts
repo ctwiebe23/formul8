@@ -11,7 +11,7 @@
  * event that fires on those updates.  Null and null if the given form doesn't
  * exist.
  */
-export declare const form_factor: (form: HTMLFormElement | string, options?: {
+export declare const formul8: (form: HTMLFormElement | string, options?: {
     debounce: number;
     events: string[];
 }) => (string | ValueColl)[];

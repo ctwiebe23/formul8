@@ -13,7 +13,7 @@ const notable_events = ["change", "blur", "keydown", "submit"];
  * event that fires on those updates.  Null and null if the given form doesn't
  * exist.
  */
-export const form_factor = (form, options = null) => {
+export const formul8 = (form, options = null) => {
     if (typeof form === "string") {
         form = document.getElementById(form);
     }
@@ -45,8 +45,7 @@ const gather_inputs = (element) => {
     for (const fieldset of fieldset_elements) {
         const name = fieldset.name ||
             fieldset.id ||
-            fieldset.querySelector(":scope > legend")
-                ?.innerText.toLowerCase() ||
+            fieldset.querySelector(":scope > legend")?.innerText.toLowerCase() ||
             fallback_id(fieldset);
         inputs[name] = gather_inputs(fieldset);
     }
@@ -81,8 +80,8 @@ const notify = (event_name, values) => {
 };
 let inc = 0;
 const fallback_id = (element) => {
-    const id = "form_factor_" + inc++;
+    const id = "formul8_" + inc++;
     element.name = id;
-    console.warn('form_factor: Using fallback id "' + id + '" for element', element);
+    console.warn('formul8: Using fallback id "' + id + '" for element', element);
     return id;
 };

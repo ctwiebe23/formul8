@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>form_factor test</title>
+    <title>formul8 test</title>
     <style>
         body {
             max-width: 700px;
@@ -56,12 +56,12 @@
     <output id="out"></output>
 
     <script type="module">
-        import { form_factor } from "./form_factor.js"
+        import { formul8 } from "./formul8.js"
 
         // Debounce of zero means the change_event fires *every* change ---
         // normally it updates after no change has happened for debounce
         // seconds.
-        const [user_input, change_event] = form_factor("user_input_form", { debounce: 0 })
+        const [user_input, change_event] = formul8("user_input_form", { debounce: 0 })
 
         const out = document.getElementById("out")
         const update_out = () => {

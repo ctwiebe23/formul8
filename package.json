@@ -1,11 +1,11 @@
 {
-  "name": "form_factor",
+  "name": "formul8",
   "version": "0.2.0",
   "description": "Automatic form handling",
   "license": "MIT",
   "author": "C Wiebe <ctwiebe23@gmail.com>",
   "type": "module",
-  "main": "form_factor.js",
+  "main": "formul8.js",
   "keywords": ["form", "HTMLFormElement"],
   "scripts": {},
   "devDependencies": {

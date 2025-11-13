@@ -5,6 +5,6 @@
         "moduleResolution": "classic"
     },
     "files": [
-        "./form_factor.ts"
+        "./formul8.ts"
     ]
 }
