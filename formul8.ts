@@ -94,7 +94,7 @@ const gather_inputs = (element: HTMLElement) => {
             fieldset.id ||
             (
                 fieldset.querySelector(":scope > legend") as HTMLElement
-            )?.innerText.toLowerCase() ||
+            )?.innerText.toLowerCase().replace(" ", "_") ||
             fallback_id(fieldset)
 
         inputs[name] = gather_inputs(fieldset as HTMLElement)

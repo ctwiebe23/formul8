@@ -67,7 +67,7 @@ const gather_inputs = (element) => {
     for (const fieldset of fieldset_elements) {
         const name = fieldset.name ||
             fieldset.id ||
-            fieldset.querySelector(":scope > legend")?.innerText.toLowerCase() ||
+            fieldset.querySelector(":scope > legend")?.innerText.toLowerCase().replace(" ", "_") ||
             fallback_id(fieldset);
         inputs[name] = gather_inputs(fieldset);
     }

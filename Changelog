@@ -1,3 +1,6 @@
+251115	0.3.1 -- Better handling of fieldset legends as IDs
+	Now replaces spaces with underscores when using a fieldset's legend's
+	innerText as an ID.
 251115	0.3.0 -- Added bidirectional updates
 	Changing the state object now also changes the form itself, and can
 	optionally auto-fire the change event.
