@@ -53,7 +53,7 @@ export const formul8 = (form, options = null) => {
     if (direction & update_dir.to_form) {
         const notify_fn = auto_notify
             ? () => notify(event_name, internal_values)
-            : () => undefined;
+            : () => void 0;
         values = value_coll_as_proxy(internal_values, inputs, notify_fn);
     }
     else {
@@ -100,7 +100,7 @@ const gather_values = (values, inputs) => {
 const value_coll_as_proxy = (values, inputs, notify) => {
     const handler = {
         get(target, key) {
-            if (target[key].constructor === Object) {
+            if (target[key]?.constructor === Object) {
                 return value_coll_as_proxy(target[key], inputs[key], notify);
             }
             else {
