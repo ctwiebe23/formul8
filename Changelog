@@ -1,3 +1,6 @@
+251121  0.4.0 -- Recursively gather inputs.
+	Now gathers inputs that are nested within a form, not just at the form
+	root.
 251116	0.3.4 -- New defaults
 	Default debounce is now 0.
 	Default events now include the submit event.

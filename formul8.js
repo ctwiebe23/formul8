@@ -71,7 +71,7 @@ const gather_inputs = (element) => {
             fallback_id(fieldset);
         inputs[name] = gather_inputs(fieldset);
     }
-    const input_elements = element.querySelectorAll(":scope > :is(input, textarea, select)");
+    const input_elements = element.querySelectorAll(":not(fieldset) :is(input, textarea, select)");
     for (const input of input_elements) {
         const name = input.name || input.id || fallback_id(input);
         inputs[name] = input;

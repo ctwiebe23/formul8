@@ -101,7 +101,7 @@ const gather_inputs = (element: HTMLElement) => {
     }
 
     const input_elements = element.querySelectorAll(
-        ":scope > :is(input, textarea, select)",
+        ":not(fieldset) :is(input, textarea, select)",
     )
 
     for (const input of input_elements) {
