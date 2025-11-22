@@ -1,5 +1,8 @@
+/**
+ * The "direction(s)" that formul8 operates in.
+ */
 export declare enum update_dir {
-    from_form = 1,
+    from_form = 1,// Changes to the form update the state object.
     to_form = 2
 }
 /**
@@ -22,6 +25,9 @@ export declare const formul8: (form: HTMLFormElement | string, options?: {
     direction: update_dir;
     auto_notify: boolean;
 }) => (string | ValueColl)[];
+/**
+ * JSON object of values taken from HTML input-like elements.
+ */
 type ValueColl = {
     [key: string]: any;
 };

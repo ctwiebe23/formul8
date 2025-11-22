@@ -1,14 +1,30 @@
+/**
+ * The "direction(s)" that formul8 operates in.
+ */
 export enum update_dir {
-    from_form = 1,
-    to_form = 2,
+    from_form = 1, // Changes to the form update the state object.
+    to_form = 2,   // Changes to the state object update the form.
 }
 
+/**
+ * Default debounce period.
+ */
 const default_debounce = 0
 
+/**
+ * Default events that formul8 recognizes.
+ */
 const default_events = ["change", "blur", "keydown", "submit", "reset"]
 
+/**
+ * Default update direction.
+ */
 const default_direction = update_dir.from_form | update_dir.to_form
 
+/**
+ * Default boolean for whether or not state object changes should automatically
+ * call the notify function.
+ */
 const default_auto_notify = true
 
 /**
@@ -34,26 +50,31 @@ export const formul8 = (
         auto_notify: boolean
     } = null,
 ) => {
+    // Input handling.
     if (typeof form === "string") {
         form = document.getElementById(form) as HTMLFormElement
     }
 
-    if (!(form instanceof HTMLFormElement)) {
+    if (!(form instanceof HTMLElement)) {
         return [null, null]
     }
 
+    // Parse options and defaults.
     const events = options?.events ?? default_events
     const debounce = options?.debounce ?? default_debounce
     const direction = options?.direction ?? default_direction
     const auto_notify = options?.auto_notify ?? default_auto_notify
 
+    // Form name.
     const name = form.name || form.id || fallback_id(form)
     const event_name = name + "-change"
 
+    // Gather inputs and initial values.
     const inputs = gather_inputs(form)
     const internal_values: ValueColl = {}
     gather_values(internal_values, inputs)
 
+    // Directional logic.
     if (direction & update_dir.from_form) {
         let timer_id: number
 
@@ -82,6 +103,9 @@ export const formul8 = (
     return [values, event_name]
 }
 
+/**
+ * JSON object of HTML input-like elements.
+ */
 type InputColl = { [key: string]: HTMLInputElement | InputColl }
 
 const gather_inputs = (element: HTMLElement) => {
@@ -114,6 +138,9 @@ const gather_inputs = (element: HTMLElement) => {
     return inputs
 }
 
+/**
+ * JSON object of values taken from HTML input-like elements.
+ */
 type ValueColl = { [key: string]: any }
 
 const gather_values = (values: ValueColl, inputs: InputColl) => {

@@ -1,11 +1,27 @@
+/**
+ * The "direction(s)" that formul8 operates in.
+ */
 export var update_dir;
 (function (update_dir) {
     update_dir[update_dir["from_form"] = 1] = "from_form";
     update_dir[update_dir["to_form"] = 2] = "to_form";
 })(update_dir || (update_dir = {}));
+/**
+ * Default debounce period.
+ */
 const default_debounce = 0;
+/**
+ * Default events that formul8 recognizes.
+ */
 const default_events = ["change", "blur", "keydown", "submit", "reset"];
+/**
+ * Default update direction.
+ */
 const default_direction = update_dir.from_form | update_dir.to_form;
+/**
+ * Default boolean for whether or not state object changes should automatically
+ * call the notify function.
+ */
 const default_auto_notify = true;
 /**
  * Builds a JSON object from the given form, where each form input is a key in
@@ -22,21 +38,26 @@ const default_auto_notify = true;
  * exist.
  */
 export const formul8 = (form, options = null) => {
+    // Input handling.
     if (typeof form === "string") {
         form = document.getElementById(form);
     }
-    if (!(form instanceof HTMLFormElement)) {
+    if (!(form instanceof HTMLElement)) {
         return [null, null];
     }
+    // Parse options and defaults.
     const events = options?.events ?? default_events;
     const debounce = options?.debounce ?? default_debounce;
     const direction = options?.direction ?? default_direction;
     const auto_notify = options?.auto_notify ?? default_auto_notify;
+    // Form name.
     const name = form.name || form.id || fallback_id(form);
     const event_name = name + "-change";
+    // Gather inputs and initial values.
     const inputs = gather_inputs(form);
     const internal_values = {};
     gather_values(internal_values, inputs);
+    // Directional logic.
     if (direction & update_dir.from_form) {
         let timer_id;
         for (const event of events) {

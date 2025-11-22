@@ -1,0 +1,7 @@
+input-file: README.md
+output-file: doc/index.html
+defaults: readme
+metadata:
+  title: formul8
+  author: C Wiebe
+  date: Nov 22 2025
