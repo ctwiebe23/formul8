@@ -111,7 +111,7 @@ type InputColl = { [key: string]: HTMLInputElement | InputColl }
 const gather_inputs = (element: HTMLElement) => {
     const inputs: InputColl = {}
     const fieldset_elements: NodeListOf<HTMLFieldSetElement> =
-        element.querySelectorAll(":scope > fieldset")
+        element.querySelectorAll("fieldset")
 
     for (const fieldset of fieldset_elements) {
         const name =

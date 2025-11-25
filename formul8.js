@@ -84,7 +84,7 @@ export const formul8 = (form, options = null) => {
 };
 const gather_inputs = (element) => {
     const inputs = {};
-    const fieldset_elements = element.querySelectorAll(":scope > fieldset");
+    const fieldset_elements = element.querySelectorAll("fieldset");
     for (const fieldset of fieldset_elements) {
         const name = fieldset.name ||
             fieldset.id ||
