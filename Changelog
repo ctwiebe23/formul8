@@ -1,3 +1,5 @@
+251125	0.4.2 -- Better typecasting.
+	Redid typecasting inside internal functions.
 251122	0.4.1 -- Removed insistence that targets must be forms.
 	Now, any HTML element can be an input to formul8.
 	Extended documentation.

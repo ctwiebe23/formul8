@@ -3,7 +3,7 @@
  */
 export enum update_dir {
     from_form = 1, // Changes to the form update the state object.
-    to_form = 2,   // Changes to the state object update the form.
+    to_form = 2, // Changes to the state object update the form.
 }
 
 /**
@@ -110,29 +110,29 @@ type InputColl = { [key: string]: HTMLInputElement | InputColl }
 
 const gather_inputs = (element: HTMLElement) => {
     const inputs: InputColl = {}
-    const fieldset_elements = element.querySelectorAll(":scope > fieldset")
+    const fieldset_elements: NodeListOf<HTMLFieldSetElement> =
+        element.querySelectorAll(":scope > fieldset")
 
     for (const fieldset of fieldset_elements) {
         const name =
-            (fieldset as HTMLFieldSetElement).name ||
+            fieldset.name ||
             fieldset.id ||
             (
                 fieldset.querySelector(":scope > legend") as HTMLElement
-            )?.innerText.toLowerCase().replace(" ", "_") ||
+            )?.innerText
+                .toLowerCase()
+                .replace(" ", "_") ||
             fallback_id(fieldset)
 
-        inputs[name] = gather_inputs(fieldset as HTMLElement)
+        inputs[name] = gather_inputs(fieldset)
     }
 
-    const input_elements = element.querySelectorAll(
-        ":not(fieldset) :is(input, textarea, select)",
-    )
+    const input_elements: NodeListOf<HTMLInputElement> =
+        element.querySelectorAll(":not(fieldset) :is(input, textarea, select)")
 
     for (const input of input_elements) {
-        const name =
-            (input as HTMLInputElement).name || input.id || fallback_id(input)
-
-        inputs[name] = input as HTMLInputElement
+        const name = input.name || input.id || fallback_id(input)
+        inputs[name] = input
     }
 
     return inputs
