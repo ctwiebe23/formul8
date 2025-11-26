@@ -1,11 +1,11 @@
-251125  0.4.3 -- Bugfixes.
+251125  0.4.3 -- Bugfixes
 	Fixed bug where nested fieldsets woudn't be caught by gather_inputs.
-251124	0.4.2 -- Better typecasting.
+251124	0.4.2 -- Better typecasting
 	Redid typecasting inside internal functions.
-251122	0.4.1 -- Removed insistence that targets must be forms.
+251122	0.4.1 -- Removed insistence that targets must be forms
 	Now, any HTML element can be an input to formul8.
 	Extended documentation.
-251121  0.4.0 -- Recursively gather inputs.
+251121  0.4.0 -- Recursively gather inputs
 	Now gathers inputs that are nested within a form, not just at the form
 	root.
 251116	0.3.4 -- New defaults
