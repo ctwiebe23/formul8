@@ -1,3 +1,6 @@
+260119	0.4.4 -- Changed order of event name choice
+	When choosing the name of a form's corresponding change event, formul8
+	now prioritizes the form's ID over the form's name.
 251125  0.4.3 -- Bugfixes
 	Fixed bug where nested fieldsets woudn't be caught by gather_inputs.
 251124	0.4.2 -- Better typecasting

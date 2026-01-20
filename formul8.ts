@@ -66,7 +66,7 @@ export const formul8 = (
     const auto_notify = options?.auto_notify ?? default_auto_notify
 
     // Form name.
-    const name = form.name || form.id || fallback_id(form)
+    const name = form.id || form.name || fallback_id(form)
     const event_name = name + "-change"
 
     // Gather inputs and initial values.
